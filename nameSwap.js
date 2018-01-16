@@ -12,7 +12,7 @@ var peopleB = [];
 var peopleA =[];
 
 //shutdown keywords
-var shutDown = ["shut up", "Shut up", "fuck off", "Fuck off", "stop", "Stop", "Go away", "go away"];
+var shutDown = ["shut up", "fuck off", "stop", "go away", "bye"];
 
 //login -- uncomment below and comment out other login prompt to generate appstate.json
 // login(credentials, (err,api) => {
@@ -66,7 +66,7 @@ login({appState: JSON.parse(fs.readFileSync('appstate.json', 'utf8'))}, (err, ap
                });
             }
 
-            if(shutDown.indexOf(event.body) > -1){
+            if(shutDown.indexOf(event.body.toLowerCase()) > -1){
                api.sendMessage("Goodbye :(", event.threadID);
                //Necessary to uncomment below and create a .json file called appstate (empty) for login via appstate to work
                // fs.writeFileSync('appstate.json', JSON.stringify(api.getAppState()));
